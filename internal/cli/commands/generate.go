@@ -18,7 +18,7 @@ func NewGenerateCommand(s *core.GenerateService) *GenerateCommand {
 	return &GenerateCommand{
 		service: s,
 		fs:      fs,
-		tool:    fs.String("tool", "", "Valor a ser gerado (para consultar as opções disponíveis, usar 'mkdocs-cli list')"),
+		tool:    fs.String("tool", "", "Valor a ser gerado (para consultar as opções disponíveis, usar 'mkdocs list')"),
 	}
 }
 

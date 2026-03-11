@@ -19,6 +19,6 @@ func main() {
 		commands.NewListCommand(generatorRegistry),
 	)
 
-	runner := cli.NewRunner("mkdocs-cli", cmdRegistry)
+	runner := cli.NewRunner("mkdocs", cmdRegistry)
 	os.Exit(runner.Run())
 }
