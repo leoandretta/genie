@@ -4,9 +4,12 @@ import (
 	"fmt"
 )
 
+type GenerateOptions struct {
+	Formatted *bool
+}
 type Generator interface {
 	Name() string
-	Generate() (string, error)
+	Generate(options GenerateOptions) (string, error)
 }
 
 type Registry map[string]Generator

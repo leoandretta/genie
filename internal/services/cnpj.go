@@ -9,7 +9,7 @@ type CNPJGenerator struct{}
 
 func (g *CNPJGenerator) Name() string { return "cnpj" }
 
-func (g *CNPJGenerator) Generate() (string, error) {
+func (g *CNPJGenerator) Generate(options GenerateOptions) (string, error) {
 	d := make([]int, 12)
 	for i := range d {
 		d[i] = rand.IntN(10)
@@ -43,6 +43,14 @@ func (g *CNPJGenerator) Generate() (string, error) {
 		v2 = 11 - resto
 	}
 
+	if *options.Formatted {
+		return fmt.Sprintf("%d%d.%d%d%d.%d%d%d/%d%d%d%d-%d%d",
+			d[0], d[1],
+			d[2], d[3], d[4],
+			d[5], d[6], d[7],
+			d[8], d[9], d[10], d[11],
+			v1, v2), nil
+	}
 	return fmt.Sprintf("%d%d%d%d%d%d%d%d%d%d%d%d%d%d",
 		d[0], d[1],
 		d[2], d[3], d[4],

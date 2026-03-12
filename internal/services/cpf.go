@@ -9,7 +9,7 @@ type CPFGenerator struct{}
 
 func (g *CPFGenerator) Name() string { return "cpf" }
 
-func (g *CPFGenerator) Generate() (string, error) {
+func (g *CPFGenerator) Generate(options GenerateOptions) (string, error) {
 	d := make([]int, 9)
 	for i := range d {
 		d[i] = rand.IntN(10)
@@ -38,6 +38,13 @@ func (g *CPFGenerator) Generate() (string, error) {
 		v2 = 11 - resto
 	}
 
+	if *options.Formatted {
+		return fmt.Sprintf("%d%d%d.%d%d%d.%d%d%d-%d%d",
+			d[0], d[1], d[2],
+			d[3], d[4], d[5],
+			d[6], d[7], d[8],
+			v1, v2), nil
+	}
 	return fmt.Sprintf("%d%d%d%d%d%d%d%d%d%d%d",
 		d[0], d[1], d[2],
 		d[3], d[4], d[5],

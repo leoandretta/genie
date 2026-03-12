@@ -17,13 +17,13 @@ func SetupGenerateService(registry services.Registry) *GenerateService {
 }
 
 // Generate gera um valor válido para a opção escolhida.
-func (s *GenerateService) Generate(algorithm string) (string, error) {
+func (s *GenerateService) Generate(algorithm string, options services.GenerateOptions) (string, error) {
 	gen, err := s.registry.Get(algorithm)
 	if err != nil {
 		return "", err
 	}
 
-	return gen.Generate()
+	return gen.Generate(options)
 }
 
 func (s *GenerateService) AvailableAlgorithms() []string {
