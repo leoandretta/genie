@@ -14,10 +14,14 @@ func main() {
 	generatorRegistry := services.SetupRegistry()
 	service := core.SetupGenerateService(generatorRegistry)
 
+	// Cria o registry com os comandos principais primeiro
 	cmdRegistry := cli.NewCommandRegistry(
 		commands.NewGenerateCommand(service),
-		commands.NewListCommand(generatorRegistry),
 	)
+
+	// ListCommand recebe o registry completo para poder listá-lo
+	listCmd := commands.NewListCommand(cmdRegistry)
+	cmdRegistry[listCmd.Name()] = listCmd
 
 	runner := cli.NewRunner("mkdocs", cmdRegistry)
 	os.Exit(runner.Run())
