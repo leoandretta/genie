@@ -1,6 +1,6 @@
 # mkdocs
 
-A command-line tool to generate values useful for development and testing.
+A command-line tool to generate fake documents and data for developers.
 
 ## Contents
 - [Requirements](#requirements)
