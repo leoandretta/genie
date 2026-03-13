@@ -91,6 +91,6 @@ $ mkdocs generate cpf -f
 # generate a valid cnpj value
 $ mkdocs generate cnpj
 
-# generate a valid cnpj value formatted in standart cnpj format (##.###.###/####-##)
+# generate a valid cnpj value formatted in standard cnpj format (##.###.###/####-##)
 $ mkdocs generate cnpj -f
 ```
