@@ -1,4 +1,4 @@
-# genie
+# 🧞Genie
 
 A command-line tool to generate fake documents and data for developers.
 
