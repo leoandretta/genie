@@ -3,8 +3,8 @@ package generate
 import (
 	"flag"
 
-	"github.com/leoandretta/mkdocs-cli/internal/core"
-	"github.com/leoandretta/mkdocs-cli/internal/services"
+	"github.com/leoandretta/genie/internal/core"
+	"github.com/leoandretta/genie/internal/services"
 )
 
 func NewCNPJ(s *core.GenerateService) *Subcommand {

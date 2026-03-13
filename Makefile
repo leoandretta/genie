@@ -1,4 +1,4 @@
-APP_NAME = mkdocs
+APP_NAME = genie
 CMD_PATH = ./cmd/cli
 DIST_DIR = dist
 

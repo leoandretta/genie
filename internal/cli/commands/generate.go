@@ -5,8 +5,8 @@ import (
 	"fmt"
 	"sort"
 
-	"github.com/leoandretta/mkdocs-cli/internal/cli/commands/generate"
-	"github.com/leoandretta/mkdocs-cli/internal/core"
+	"github.com/leoandretta/genie/internal/cli/commands/generate"
+	"github.com/leoandretta/genie/internal/core"
 )
 
 type GenerateCommand struct {
@@ -61,11 +61,11 @@ func (c *GenerateCommand) Run(args []string) error {
 }
 
 func (c *GenerateCommand) printHelp() {
-	fmt.Println("Usage: mkdocs generate <subcommand> [flags]")
+	fmt.Println("Usage: genie generate <subcommand> [flags]")
 	fmt.Println()
 	c.listSubcommands()
 	fmt.Println()
-	fmt.Println("Try: mkdocs generate <subcommand> --help for help.")
+	fmt.Println("Try: genie generate <subcommand> --help for help.")
 }
 
 func (c *GenerateCommand) listSubcommands() {

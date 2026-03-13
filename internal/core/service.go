@@ -1,7 +1,7 @@
 package core
 
 import (
-	"github.com/leoandretta/mkdocs-cli/internal/services"
+	"github.com/leoandretta/genie/internal/services"
 )
 
 type GenerateService struct {

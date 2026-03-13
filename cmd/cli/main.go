@@ -4,10 +4,10 @@ package main
 import (
 	"os"
 
-	"github.com/leoandretta/mkdocs-cli/internal/cli"
-	"github.com/leoandretta/mkdocs-cli/internal/cli/commands"
-	"github.com/leoandretta/mkdocs-cli/internal/core"
-	"github.com/leoandretta/mkdocs-cli/internal/services"
+	"github.com/leoandretta/genie/internal/cli"
+	"github.com/leoandretta/genie/internal/cli/commands"
+	"github.com/leoandretta/genie/internal/core"
+	"github.com/leoandretta/genie/internal/services"
 )
 
 func main() {
@@ -19,6 +19,6 @@ func main() {
 		commands.NewGenerateCommand(service),
 	)
 
-	runner := cli.NewRunner("mkdocs", cmdRegistry)
+	runner := cli.NewRunner("genie", cmdRegistry)
 	os.Exit(runner.Run())
 }

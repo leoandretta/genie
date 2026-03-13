@@ -4,7 +4,7 @@
 *.dll
 *.so
 *.dylib
-*mkdocs-cli
+*genie-cli
 
 # Test binary, built with `go test -c`
 *.test
