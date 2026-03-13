@@ -34,7 +34,7 @@ func NewGenerateCommand(s *core.GenerateService) *GenerateCommand {
 
 func (c *GenerateCommand) Name() string { return "generate" }
 func (c *GenerateCommand) Description() string {
-	return "Gera um valor válido para a opção selecionada"
+	return "Generates a valid value for the option requested"
 }
 func (c *GenerateCommand) FlagSet() *flag.FlagSet { return c.fs }
 
@@ -54,9 +54,9 @@ func (c *GenerateCommand) Run(args []string) error {
 
 	sub, ok := c.subcommands[subName]
 	if !ok {
-		fmt.Printf("erro: subcomando desconhecido %q\n\n", subName)
+		fmt.Printf("error: unknown generate option %q\n\n", subName)
 		c.printHelp()
-		return fmt.Errorf("subcomando desconhecido: %q", subName)
+		return fmt.Errorf("unknown generate option: %q", subName)
 	}
 
 	result, err := sub.Run(args[1:])
@@ -68,11 +68,11 @@ func (c *GenerateCommand) Run(args []string) error {
 }
 
 func (c *GenerateCommand) printHelp() {
-	fmt.Println("Uso: mkdocs generate <subcomando> [flags]")
+	fmt.Println("Usage: mkdocs generate <subcommand> [flags]")
 	fmt.Println()
 	c.listSubcommands()
 	fmt.Println()
-	fmt.Println("Use mkdocs generate <subcomando> --help para detalhes.")
+	fmt.Println("Try: mkdocs generate <subcommand> --help for help.")
 }
 
 func (c *GenerateCommand) listSubcommands() {
@@ -81,7 +81,7 @@ func (c *GenerateCommand) listSubcommands() {
 		names = append(names, k)
 	}
 	sort.Strings(names)
-	fmt.Println("Subcomandos disponíveis:")
+	fmt.Println("Available generate options:")
 	for _, name := range names {
 		fmt.Printf("  - %s\n", name)
 	}

@@ -9,7 +9,7 @@ import (
 
 func NewCPF(s *core.GenerateService) *Subcommand {
 	fs := flag.NewFlagSet("generate cpf", flag.ContinueOnError)
-	formatted := fs.Bool("f", false, "Formatar o CPF")
+	formatted := fs.Bool("f", false, "Returns the CPF in standard format")
 	options := services.GenerateOptions{
 		Formatted: formatted,
 	}

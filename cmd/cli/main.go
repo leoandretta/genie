@@ -19,10 +19,6 @@ func main() {
 		commands.NewGenerateCommand(service),
 	)
 
-	// ListCommand recebe o registry completo para poder listá-lo
-	listCmd := commands.NewListCommand(cmdRegistry)
-	cmdRegistry[listCmd.Name()] = listCmd
-
 	runner := cli.NewRunner("mkdocs", cmdRegistry)
 	os.Exit(runner.Run())
 }

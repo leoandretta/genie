@@ -26,7 +26,7 @@ func (r *Runner) Run() int {
 
 	cmd, ok := r.registry[args[0]]
 	if !ok {
-		fmt.Fprintf(os.Stderr, "erro: comando desconhecido %q\n\n", args[0])
+		fmt.Fprintf(os.Stderr, "error: unknown command %q\n\n", args[0])
 		r.printHelp()
 		return 1
 	}
@@ -34,7 +34,7 @@ func (r *Runner) Run() int {
 	if err := cmd.Run(args[1:]); err != nil {
 		// erros de parsing do FlagSet já são impressos pelo próprio flag
 		if err != flag.ErrHelp {
-			fmt.Fprintln(os.Stderr, "erro:", err)
+			fmt.Fprintln(os.Stderr, "error:", err)
 		}
 		return 1
 	}
@@ -42,7 +42,7 @@ func (r *Runner) Run() int {
 }
 
 func (r *Runner) printHelp() {
-	fmt.Printf("Uso: %s <comando> [flags]\n\nComandos:\n", r.appName)
+	fmt.Printf("Usage: %s <command> [flags]\n\nAvailable commands:\n", r.appName)
 	// ordena para output determinístico
 	names := make([]string, 0, len(r.registry))
 	for k := range r.registry {
@@ -52,5 +52,5 @@ func (r *Runner) printHelp() {
 	for _, name := range names {
 		fmt.Printf("  %-14s %s\n", name, r.registry[name].Description())
 	}
-	fmt.Printf("\nUse %s <comando> --help para detalhes de cada comando.\n", r.appName)
+	fmt.Printf("\nTry: %s <command> --help for help with each available command.\n", r.appName)
 }

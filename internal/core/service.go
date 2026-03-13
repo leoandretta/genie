@@ -1,12 +1,8 @@
 package core
 
 import (
-	"fmt"
-
 	"github.com/leoandretta/mkdocs-cli/internal/services"
 )
-
-var ErrUnknownAlgorithm = fmt.Errorf("algoritmo não encontrado")
 
 type GenerateService struct {
 	registry services.Registry

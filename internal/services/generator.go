@@ -32,7 +32,7 @@ func (r Registry) register(gens ...Generator) {
 func (r Registry) Get(name string) (Generator, error) {
 	g, ok := r[name]
 	if !ok {
-		return nil, fmt.Errorf("algoritmo desconhecido: %q", name)
+		return nil, fmt.Errorf("unknown option: %q", name)
 	}
 	return g, nil
 }

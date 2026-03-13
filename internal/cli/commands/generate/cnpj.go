@@ -9,7 +9,7 @@ import (
 
 func NewCNPJ(s *core.GenerateService) *Subcommand {
 	fs := flag.NewFlagSet("generate cnpj", flag.ContinueOnError)
-	formatted := fs.Bool("f", false, "Formatar o CNPJ")
+	formatted := fs.Bool("f", false, "Returns the CNPJ in standard format")
 	options := services.GenerateOptions{
 		Formatted: formatted,
 	}
