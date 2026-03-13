@@ -19,11 +19,11 @@ build:
 	
 install:
 	@go build -o $(BIN_PATH) $(CMD_PATH)
-	@echo "$(APP_NAME) installed successfully"
+	@echo $(APP_NAME) installed successfully
 
 uninstall:	
 	@$(RM_CMD) $(BIN_PATH)
-	@echo "$(APP_NAME) uninstalled successfully"
+	@echo $(APP_NAME) uninstalled successfully
 
 deps:
 	@go mod download
