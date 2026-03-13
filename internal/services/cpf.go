@@ -15,7 +15,7 @@ func (g *CPFGenerator) Generate(options GenerateOptions) (string, error) {
 		d[i] = rand.IntN(10)
 	}
 
-	// Calcula o 1º dígito verificador
+	// First verifier digit (d09)
 	sum := 0
 	for i, v := range d {
 		sum += v * (10 - i)
@@ -26,7 +26,7 @@ func (g *CPFGenerator) Generate(options GenerateOptions) (string, error) {
 		v1 = 11 - resto
 	}
 
-	// Calcula o 2º dígito verificador
+	// First verifier digit (d10)
 	sum = 0
 	for i, v := range d {
 		sum += v * (11 - i)

@@ -9,7 +9,6 @@ import (
 	"github.com/leoandretta/mkdocs-cli/internal/core"
 )
 
-// GenerateCommand é o comando `mkdocs generate <subcomando>`.
 type GenerateCommand struct {
 	service     *core.GenerateService
 	fs          *flag.FlagSet
@@ -45,12 +44,6 @@ func (c *GenerateCommand) Run(args []string) error {
 	}
 
 	subName := args[0]
-
-	// `mkdocs generate list` lista subcomandos disponíveis
-	if subName == "list" {
-		c.listSubcommands()
-		return nil
-	}
 
 	sub, ok := c.subcommands[subName]
 	if !ok {

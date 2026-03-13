@@ -14,13 +14,13 @@ func (g *CNPJGenerator) Generate(options GenerateOptions) (string, error) {
 	for i := range d {
 		d[i] = rand.IntN(10)
 	}
-	// Os 4 dígitos do filial (posições 8-11) costumam ser 0001 para matriz
+	// Default 4 digits (d8-d11) for main office are usually 0001
 	d[8], d[9], d[10], d[11] = 0, 0, 0, 1
 
 	pesos1 := []int{5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
 	pesos2 := []int{6, 5, 4, 3, 2, 9, 8, 7, 6, 5, 4, 3, 2}
 
-	// Calcula o 1º dígito verificador
+	// First verifier digit (d12)
 	sum := 0
 	for i, v := range d {
 		sum += v * pesos1[i]
@@ -31,7 +31,7 @@ func (g *CNPJGenerator) Generate(options GenerateOptions) (string, error) {
 		v1 = 11 - resto
 	}
 
-	// Calcula o 2º dígito verificador
+	// Second verifier digit (d13)
 	sum = 0
 	for i, v := range d {
 		sum += v * pesos2[i]

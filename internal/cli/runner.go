@@ -32,7 +32,6 @@ func (r *Runner) Run() int {
 	}
 
 	if err := cmd.Run(args[1:]); err != nil {
-		// erros de parsing do FlagSet já são impressos pelo próprio flag
 		if err != flag.ErrHelp {
 			fmt.Fprintln(os.Stderr, "error:", err)
 		}
