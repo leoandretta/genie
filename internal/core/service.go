@@ -2,6 +2,7 @@ package core
 
 import (
 	"github.com/leoandretta/genie/internal/services"
+	"golang.design/x/clipboard"
 )
 
 type GenerateService struct {
@@ -18,7 +19,15 @@ func (s *GenerateService) Generate(algorithm string, options services.GenerateOp
 		return "", err
 	}
 
-	return gen.Generate(options)
+	response, genErr := gen.Generate(options)
+	if genErr != nil {
+		return "", genErr
+	}
+	if *options.Copy == true {
+		clipboard.Write(clipboard.FmtText, []byte(response))
+		response += " - 🗐 Copied to clipboard!"
+	}
+	return response, nil
 }
 
 func (s *GenerateService) AvailableAlgorithms() []string {

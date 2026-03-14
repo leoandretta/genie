@@ -6,6 +6,7 @@ import (
 
 type GenerateOptions struct {
 	Formatted *bool
+	Copy      *bool
 }
 type Generator interface {
 	Name() string

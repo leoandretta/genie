@@ -10,8 +10,10 @@ import (
 func NewCNPJ(s *core.GenerateService) *Subcommand {
 	fs := flag.NewFlagSet("generate cnpj", flag.ContinueOnError)
 	formatted := fs.Bool("f", false, "Returns the CNPJ in standard format")
+	copyToClipboard := fs.Bool("c", false, "Copy response to clipboard")
 	options := services.GenerateOptions{
 		Formatted: formatted,
+		Copy:      copyToClipboard,
 	}
 	return &Subcommand{
 		Name: "cnpj",
