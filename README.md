@@ -22,7 +22,7 @@ Installation guide for the CLI tool.
 
 ```shell
 # clone the repository
-$ git clone https://github.com/leoandretta/genie-cli.git
+$ git clone https://github.com/leoandretta/genie.git
 $ cd genie
 
 
@@ -32,8 +32,8 @@ $ make install
 ### Manual
 
 ```shell
-git clone https://github.com/leoandretta/genie-cli.git
-cd genie-cli
+git clone https://github.com/leoandretta/genie.git
+cd genie
 go build -o genie ./cmd/cli
 ```
 > After installing, make sure $GOPATH/bin is in your $PATH.
