@@ -10,8 +10,11 @@ import (
 func NewCPF(s *core.GenerateService) *Subcommand {
 	fs := flag.NewFlagSet("generate cpf", flag.ContinueOnError)
 	formatted := fs.Bool("f", false, "Returns the CPF in standard format")
+	copyToClipboard := fs.Bool("c", false, "Copy response to clipboard")
+
 	options := services.GenerateOptions{
 		Formatted: formatted,
+		Copy:      copyToClipboard,
 	}
 	return &Subcommand{
 		Name: "cpf",
