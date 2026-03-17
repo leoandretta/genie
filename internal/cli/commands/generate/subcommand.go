@@ -1,6 +1,8 @@
 package generate
 
-import "flag"
+import (
+	"flag"
+)
 
 type Subcommand struct {
 	Name string
