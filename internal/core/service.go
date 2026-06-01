@@ -5,21 +5,21 @@ import (
 	"golang.design/x/clipboard"
 )
 
-type GenerateService struct {
+type CLIService struct {
 	registry services.Registry
 }
 
-func SetupGenerateService(registry services.Registry) *GenerateService {
-	return &GenerateService{registry: registry}
+func SetupCLIService(registry services.Registry) *CLIService {
+	return &CLIService{registry: registry}
 }
 
-func (s *GenerateService) Generate(algorithm string, options services.GenerateOptions) (string, error) {
+func (s *CLIService) Run(algorithm string, options services.CLIOptions) (string, error) {
 	gen, err := s.registry.Get(algorithm)
 	if err != nil {
 		return "", err
 	}
 
-	response, genErr := gen.Generate(options)
+	response, genErr := gen.Run(options)
 	if genErr != nil {
 		return "", genErr
 	}
@@ -30,6 +30,6 @@ func (s *GenerateService) Generate(algorithm string, options services.GenerateOp
 	return response, nil
 }
 
-func (s *GenerateService) AvailableAlgorithms() []string {
+func (s *CLIService) AvailableAlgorithms() []string {
 	return s.registry.Names()
 }

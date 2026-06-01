@@ -4,16 +4,16 @@ import (
 	"fmt"
 )
 
-type GenerateOptions struct {
+type CLIOptions struct {
 	Formatted *bool
 	Copy      *bool
 }
-type Generator interface {
+type CLIAction interface {
 	Name() string
-	Generate(options GenerateOptions) (string, error)
+	Run(options CLIOptions) (string, error)
 }
 
-type Registry map[string]Generator
+type Registry map[string]CLIAction
 
 func SetupRegistry() Registry {
 	r := Registry{}
@@ -24,13 +24,13 @@ func SetupRegistry() Registry {
 	return r
 }
 
-func (r Registry) register(gens ...Generator) {
+func (r Registry) register(gens ...CLIAction) {
 	for _, g := range gens {
 		r[g.Name()] = g
 	}
 }
 
-func (r Registry) Get(name string) (Generator, error) {
+func (r Registry) Get(name string) (CLIAction, error) {
 	g, ok := r[name]
 	if !ok {
 		return nil, fmt.Errorf("unknown option: %q", name)

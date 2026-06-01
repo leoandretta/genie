@@ -1,29 +1,29 @@
-package commands
+package generate
 
 import (
 	"flag"
 	"fmt"
 	"sort"
 
-	"github.com/leoandretta/genie/internal/cli/commands/generate"
+	"github.com/leoandretta/genie/internal/cli/commands"
 	"github.com/leoandretta/genie/internal/core"
 )
 
 type GenerateCommand struct {
-	service     *core.GenerateService
+	service     *core.CLIService
 	fs          *flag.FlagSet
-	subcommands map[string]*generate.Subcommand
+	subcommands map[string]*commands.SubCommand
 }
 
-func NewGenerateCommand(s *core.GenerateService) *GenerateCommand {
+func NewGenerateCommand(s *core.CLIService) *GenerateCommand {
 	fs := flag.NewFlagSet("generate", flag.ContinueOnError)
 
-	subList := []*generate.Subcommand{
-		generate.NewCPF(s),
-		generate.NewCNPJ(s),
+	subList := []*commands.SubCommand{
+		NewCPF(s),
+		NewCNPJ(s),
 	}
 
-	subs := make(map[string]*generate.Subcommand, len(subList))
+	subs := make(map[string]*commands.SubCommand, len(subList))
 	for _, sub := range subList {
 		subs[sub.Name] = sub
 	}
