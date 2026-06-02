@@ -7,6 +7,7 @@ import (
 type CLIOptions struct {
 	Formatted *bool
 	Copy      *bool
+	Input     *string
 }
 type CLIAction interface {
 	Name() string
@@ -20,6 +21,8 @@ func SetupRegistry() Registry {
 	r.register(
 		&CPFGenerator{},
 		&CNPJGenerator{},
+		&Base64Encoder{},
+		&Base64Decoder{},
 	)
 	return r
 }
