@@ -60,19 +60,13 @@ func (r *Runner) printHelp() {
 func preprocessBundledFlags(args []string) []string {
 	var result []string
 	for _, arg := range args {
-		if (strings.HasPrefix(arg, "-") && !strings.Contains(arg, "=")) &&
-			(len(arg) > 2 && (strings.HasPrefix(arg, "--") || !strings.Contains(arg[1:], "--"))) {
-
-			if strings.HasPrefix(arg, "--") {
-				arg = arg[2:]
-			} else {
-				arg = arg[1:]
-			}
-			for _, ch := range arg {
-				result = append(result, "-"+string(ch))
-			}
-		} else {
+		if strings.HasPrefix(arg, "--") || !strings.HasPrefix(arg, "-") || len(arg) <= 2 || strings.Contains(arg, "=") {
 			result = append(result, arg)
+			continue
+		}
+		// Single-dash bundled flags like -fc → -f -c
+		for _, ch := range arg[1:] {
+			result = append(result, "-"+string(ch))
 		}
 	}
 	return result

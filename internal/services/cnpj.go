@@ -9,7 +9,7 @@ type CNPJGenerator struct{}
 
 func (g *CNPJGenerator) Name() string { return "cnpj" }
 
-func (g *CNPJGenerator) Generate(options GenerateOptions) (string, error) {
+func (g *CNPJGenerator) Run(options CLIOptions) (string, error) {
 	d := make([]int, 12)
 	for i := range d {
 		d[i] = rand.IntN(10)

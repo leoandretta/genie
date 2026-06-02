@@ -5,18 +5,21 @@ import (
 	"os"
 
 	"github.com/leoandretta/genie/internal/cli"
-	"github.com/leoandretta/genie/internal/cli/commands"
+	"github.com/leoandretta/genie/internal/cli/commands/decode"
+	"github.com/leoandretta/genie/internal/cli/commands/encode"
+	"github.com/leoandretta/genie/internal/cli/commands/generate"
 	"github.com/leoandretta/genie/internal/core"
 	"github.com/leoandretta/genie/internal/services"
 )
 
 func main() {
-	generatorRegistry := services.SetupRegistry()
-	service := core.SetupGenerateService(generatorRegistry)
+	actionRegistry := services.SetupRegistry()
+	cliService := core.SetupCLIService(actionRegistry)
 
-	// Cria o registry com os comandos principais primeiro
 	cmdRegistry := cli.NewCommandRegistry(
-		commands.NewGenerateCommand(service),
+		generate.NewGenerateCommand(cliService),
+		encode.NewEncodeCommand(cliService),
+		decode.NewDecodeCommand(cliService),
 	)
 
 	runner := cli.NewRunner("genie", cmdRegistry)

@@ -9,7 +9,7 @@ type CPFGenerator struct{}
 
 func (g *CPFGenerator) Name() string { return "cpf" }
 
-func (g *CPFGenerator) Generate(options GenerateOptions) (string, error) {
+func (g *CPFGenerator) Run(options CLIOptions) (string, error) {
 	d := make([]int, 9)
 	for i := range d {
 		d[i] = rand.IntN(10)
